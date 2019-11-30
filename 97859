@@ -23,21 +23,26 @@ def operalea(a,b,r1,r2,method):
 	elif k==4:
 		method=method+str(a)+"/"+str(b)+"\n"
 		return a/b,method
-L=[]
-methode=""
-for i in range(1,7):
-	L.append(i*randint(1,5)) #L: 6 elements
-print("les chiffres: ",L)
-m=randint(4,5)
-for j in range(m):
-	u=randint(0,len(L)-1)
-	a=L[u]
-	del L[u]
-	v=randint(0,len(L)-1)
-	b=L[v]
-	del L[v]
-	ope,methode=operalea(a,b,a%b,b%a,methode)
-	L.append(ope)
-print("valeur: ",L[len(L)-1])
-afficher=input("afficher: \n")
-print(methode)
+boucle=True
+while boucle==True:
+	L=[]
+	methode=""
+	for i in range(1,7):
+		L.append(i*randint(1,5)) #L: 6 elements
+	J=L[:]
+	m=randint(4,5)
+	for j in range(m):
+		u=randint(0,len(L)-1)
+		a=L[u]
+		del L[u]
+		v=randint(0,len(L)-1)
+		b=L[v]
+		del L[v]
+		ope,methode=operalea(a,b,a%b,b%a,methode)
+		L.append(ope)
+	if L[len(L)-1]>100 and L[len(L)-1]<1000:
+		boucle=False
+		print("Les chiffres: ",J)
+		print("Valeur: ",L[len(L)-1])
+		afficher=input("afficher: \n")
+		print(methode)
